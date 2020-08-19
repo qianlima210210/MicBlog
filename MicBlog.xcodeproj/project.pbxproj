@@ -8,22 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		D0BDE20324ED75A5007B83F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BDE20224ED75A5007B83F9 /* AppDelegate.swift */; };
-		D0BDE20524ED75A5007B83F9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BDE20424ED75A5007B83F9 /* SceneDelegate.swift */; };
-		D0BDE20724ED75A5007B83F9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BDE20624ED75A5007B83F9 /* ViewController.swift */; };
-		D0BDE20A24ED75A5007B83F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0BDE20824ED75A5007B83F9 /* Main.storyboard */; };
 		D0BDE20C24ED75A7007B83F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0BDE20B24ED75A7007B83F9 /* Assets.xcassets */; };
-		D0BDE20F24ED75A7007B83F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0BDE20D24ED75A7007B83F9 /* LaunchScreen.storyboard */; };
+		D0BDE21724ED7EA6007B83F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0BDE21624ED7EA6007B83F9 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D0BDE1FF24ED75A5007B83F9 /* MicBlog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MicBlog.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0BDE1FF24ED75A5007B83F9 /* 微博.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "微博.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0BDE20224ED75A5007B83F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D0BDE20424ED75A5007B83F9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D0BDE20624ED75A5007B83F9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D0BDE20924ED75A5007B83F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D0BDE20B24ED75A7007B83F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D0BDE20E24ED75A7007B83F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D0BDE21024ED75A7007B83F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D0BDE21624ED7EA6007B83F9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,7 +42,7 @@
 		D0BDE20024ED75A5007B83F9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D0BDE1FF24ED75A5007B83F9 /* MicBlog.app */,
+				D0BDE1FF24ED75A5007B83F9 /* 微博.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -57,12 +51,9 @@
 			isa = PBXGroup;
 			children = (
 				D0BDE20224ED75A5007B83F9 /* AppDelegate.swift */,
-				D0BDE20424ED75A5007B83F9 /* SceneDelegate.swift */,
-				D0BDE20624ED75A5007B83F9 /* ViewController.swift */,
-				D0BDE20824ED75A5007B83F9 /* Main.storyboard */,
 				D0BDE20B24ED75A7007B83F9 /* Assets.xcassets */,
-				D0BDE20D24ED75A7007B83F9 /* LaunchScreen.storyboard */,
 				D0BDE21024ED75A7007B83F9 /* Info.plist */,
+				D0BDE21624ED7EA6007B83F9 /* LaunchScreen.storyboard */,
 			);
 			path = MicBlog;
 			sourceTree = "<group>";
@@ -84,7 +75,7 @@
 			);
 			name = MicBlog;
 			productName = MicBlog;
-			productReference = D0BDE1FF24ED75A5007B83F9 /* MicBlog.app */;
+			productReference = D0BDE1FF24ED75A5007B83F9 /* 微博.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -125,9 +116,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0BDE20F24ED75A7007B83F9 /* LaunchScreen.storyboard in Resources */,
 				D0BDE20C24ED75A7007B83F9 /* Assets.xcassets in Resources */,
-				D0BDE20A24ED75A5007B83F9 /* Main.storyboard in Resources */,
+				D0BDE21724ED7EA6007B83F9 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,32 +128,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0BDE20724ED75A5007B83F9 /* ViewController.swift in Sources */,
 				D0BDE20324ED75A5007B83F9 /* AppDelegate.swift in Sources */,
-				D0BDE20524ED75A5007B83F9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		D0BDE20824ED75A5007B83F9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D0BDE20924ED75A5007B83F9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		D0BDE20D24ED75A7007B83F9 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D0BDE20E24ED75A7007B83F9 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D0BDE21124ED75A7007B83F9 /* Debug */ = {
@@ -216,7 +185,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -270,7 +239,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -291,9 +260,9 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nn.MicBlog;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "微博";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -308,9 +277,9 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nn.MicBlog;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "微博";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
