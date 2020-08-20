@@ -50,12 +50,92 @@
 		D0BDE20124ED75A5007B83F9 /* MicBlog */ = {
 			isa = PBXGroup;
 			children = (
+				D0BDE21824EE2F83007B83F9 /* classes */,
 				D0BDE20224ED75A5007B83F9 /* AppDelegate.swift */,
 				D0BDE20B24ED75A7007B83F9 /* Assets.xcassets */,
 				D0BDE21024ED75A7007B83F9 /* Info.plist */,
 				D0BDE21624ED7EA6007B83F9 /* LaunchScreen.storyboard */,
 			);
 			path = MicBlog;
+			sourceTree = "<group>";
+		};
+		D0BDE21824EE2F83007B83F9 /* classes */ = {
+			isa = PBXGroup;
+			children = (
+				D0BDE21924EE2F83007B83F9 /* ViewModel */,
+				D0BDE21A24EE2F83007B83F9 /* Tools */,
+				D0BDE21B24EE2F83007B83F9 /* Model */,
+				D0BDE21C24EE2F83007B83F9 /* View */,
+			);
+			path = classes;
+			sourceTree = SOURCE_ROOT;
+		};
+		D0BDE21924EE2F83007B83F9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D0BDE21A24EE2F83007B83F9 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		D0BDE21B24EE2F83007B83F9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D0BDE21C24EE2F83007B83F9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D0BDE21D24EE2F83007B83F9 /* Home */,
+				D0BDE21E24EE2F83007B83F9 /* Discover */,
+				D0BDE21F24EE2F83007B83F9 /* Message */,
+				D0BDE22024EE2F83007B83F9 /* Profile */,
+				D0BDE22124EE2F83007B83F9 /* Main */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D0BDE21D24EE2F83007B83F9 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		D0BDE21E24EE2F83007B83F9 /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
+		D0BDE21F24EE2F83007B83F9 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		D0BDE22024EE2F83007B83F9 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		D0BDE22124EE2F83007B83F9 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
