@@ -18,10 +18,8 @@ class MainViewController: UITabBarController {
         addChild(title: "发现", imageName: "tabbar_discover", vc:DiscoverViewController())
         addChild(title: "我", imageName: "tabbar_profile", vc:ProfileViewController())
         
-        //统一设置
-        let item = UITabBarItem.appearance()
-        item.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.blue], for: .normal)
-        item.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.red], for: .selected)
+        
+        setTabBarTitleColor()
         
     }
 
@@ -31,16 +29,40 @@ class MainViewController: UITabBarController {
 extension MainViewController {
     
     func addChild(title:String, imageName:String, vc:UIViewController) {
-        
+
         vc.tabBarItem.title = title
         vc.tabBarItem.image = UIImage(named: imageName)?.withRenderingMode(.alwaysOriginal)
         vc.tabBarItem.selectedImage = UIImage(named: imageName + "_selected")?.withRenderingMode(.alwaysOriginal)
         
-        //单独设置
-//        vc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.blue], for: .normal)
-//        vc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.red], for: .selected)
-        
-        
+        //setupTabbarItemTextStyle(vc: vc)
         addChild(vc)
     }
+    
+    //统一设置
+    func setTabBarTitleColor() {
+        if #available(iOS 13.0, *) {
+            UITabBar.appearance().tintColor = UIColor.red
+            UITabBar.appearance().unselectedItemTintColor = UIColor.black
+        } else {
+            UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.black], for: .normal)
+            UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.red], for: .selected)
+        }
+    }
+    
+    // 设置tabbarItem文字颜色、字体
+    func setupTabbarItemTextStyle(vc: UIViewController) {
+        if #available(iOS 13, *) {
+            let appearance = UITabBarAppearance();
+            // 设置未被选中的颜色、字体
+            appearance.stackedLayoutAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red];
+            // 设置被选中时的颜色、字体
+            appearance.stackedLayoutAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange];
+            vc.tabBarItem.standardAppearance = appearance;
+        } else {
+            //单独设置
+            //vc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.red], for: .normal)
+            //vc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.orange], for: .selected)
+        }
+    }
+
 }
