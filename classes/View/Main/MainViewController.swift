@@ -9,17 +9,31 @@
 import UIKit
 
 class MainViewController: UITabBarController {
+    
+    lazy var composeBtn: UIButton = {
+       let btn = UIButton()
+        btn.setImage(UIImage(named: "tabbar_compose_icon_add"), for: .normal)
+        btn.setImage(UIImage(named: "tabbar_compose_icon_add_highlighted"), for: .highlighted)
+        
+        btn.setBackgroundImage(UIImage(named: "tabbar_compose_button"), for: .normal)
+        btn.setBackgroundImage(UIImage(named: "tabbar_compose_button_highlighted"), for: .highlighted)
+        
+        return btn
+        
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        addChild(title: "首页", imageName: "tabbar_home", vc:HomeViewController())
-        addChild(title: "消息", imageName: "tabbar_message_center", vc:MessageViewController())
-        addChild(title: "发现", imageName: "tabbar_discover", vc:DiscoverViewController())
-        addChild(title: "我", imageName: "tabbar_profile", vc:ProfileViewController())
+        addChilds()
+        setupComposeButton()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //会创建tabBar中的所有控制器对应的按钮
+        super.viewWillAppear(animated)
         
-        
-        setTabBarTitleColor()
+        //将按钮移到同级最前
+        tabBar.bringSubviewToFront(composeBtn)
         
     }
 
@@ -28,41 +42,46 @@ class MainViewController: UITabBarController {
 //MARK: 添加child
 extension MainViewController {
     
+    func setupComposeButton() -> Void {
+        tabBar.addSubview(composeBtn)
+        let count = children.count
+        let width = tabBar.bounds.width / CGFloat(count)
+        
+        composeBtn.frame = CGRect(x: 2 * width, y: 1, width: width, height: tabBar.bounds.height)
+        
+    }
+    
+    func addChilds() -> Void {
+        addChild(title: "首页", imageName: "tabbar_home", vc:HomeViewController())
+        addChild(title: "消息", imageName: "tabbar_message_center", vc:MessageViewController())
+        
+        addChild(UIViewController())
+        
+        addChild(title: "发现", imageName: "tabbar_discover", vc:DiscoverViewController())
+        addChild(title: "我", imageName: "tabbar_profile", vc:ProfileViewController())
+        
+        //setTabBarTitleColor()
+    }
+    
     func addChild(title:String, imageName:String, vc:UIViewController) {
-
+        setupTabbarItemTextStyle(vc: vc)
         vc.tabBarItem.title = title
         vc.tabBarItem.image = UIImage(named: imageName)?.withRenderingMode(.alwaysOriginal)
         vc.tabBarItem.selectedImage = UIImage(named: imageName + "_selected")?.withRenderingMode(.alwaysOriginal)
         
-        //setupTabbarItemTextStyle(vc: vc)
         addChild(vc)
     }
     
     //统一设置
     func setTabBarTitleColor() {
-        if #available(iOS 13.0, *) {
-            UITabBar.appearance().tintColor = UIColor.red
-            UITabBar.appearance().unselectedItemTintColor = UIColor.black
-        } else {
-            UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.black], for: .normal)
-            UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.red], for: .selected)
-        }
+        UITabBar.appearance().tintColor = UIColor.red
+        UITabBar.appearance().unselectedItemTintColor = UIColor.black
     }
     
-    // 设置tabbarItem文字颜色、字体
+    //单独设置tabbarItem文字颜色、字体（但是normal没生效啊）
     func setupTabbarItemTextStyle(vc: UIViewController) {
-        if #available(iOS 13, *) {
-            let appearance = UITabBarAppearance();
-            // 设置未被选中的颜色、字体
-            appearance.stackedLayoutAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red];
-            // 设置被选中时的颜色、字体
-            appearance.stackedLayoutAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange];
-            vc.tabBarItem.standardAppearance = appearance;
-        } else {
-            //单独设置
-            //vc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.red], for: .normal)
-            //vc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.orange], for: .selected)
-        }
+        vc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.orange], for: .selected)
+        vc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.black], for: .normal)
     }
 
 }
