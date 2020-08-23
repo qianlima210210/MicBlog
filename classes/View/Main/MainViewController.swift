@@ -8,19 +8,9 @@
 
 import UIKit
 
-class MainViewController: UITabBarController {
+@objcMembers class MainViewController: UITabBarController {
     
-    lazy var composeBtn: UIButton = {
-       let btn = UIButton()
-        btn.setImage(UIImage(named: "tabbar_compose_icon_add"), for: .normal)
-        btn.setImage(UIImage(named: "tabbar_compose_icon_add_highlighted"), for: .highlighted)
-        
-        btn.setBackgroundImage(UIImage(named: "tabbar_compose_button"), for: .normal)
-        btn.setBackgroundImage(UIImage(named: "tabbar_compose_button_highlighted"), for: .highlighted)
-        
-        return btn
-        
-    }()
+    lazy var composeBtn: UIButton = UIButton(name: "tabbar_compose_icon_add", bgName: "tabbar_compose_button")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,12 +32,18 @@ class MainViewController: UITabBarController {
 //MARK: 添加child
 extension MainViewController {
     
+    func composeBtnOnClickListener(sender:UIButton) -> Void {
+        print(String(format: "%@", "composeBtnOnClickListener"))
+    }
+    
     func setupComposeButton() -> Void {
         tabBar.addSubview(composeBtn)
         let count = children.count
         let width = tabBar.bounds.width / CGFloat(count)
         
         composeBtn.frame = CGRect(x: 2 * width, y: 1, width: width, height: tabBar.bounds.height)
+        
+        composeBtn.addTarget(self, action: #selector(composeBtnOnClickListener(sender:)), for: .touchUpInside)
         
     }
     
@@ -69,7 +65,7 @@ extension MainViewController {
         vc.tabBarItem.image = UIImage(named: imageName)?.withRenderingMode(.alwaysOriginal)
         vc.tabBarItem.selectedImage = UIImage(named: imageName + "_selected")?.withRenderingMode(.alwaysOriginal)
         
-        addChild(vc)
+        addChild(MainNavigationController(rootViewController: vc))
     }
     
     //统一设置
