@@ -16,6 +16,7 @@ import UIKit
         super.viewDidLoad()
         addChilds()
         setupComposeButton()
+        specialSettingToTabBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,6 +79,20 @@ extension MainViewController {
     func setupTabbarItemTextStyle(vc: UIViewController) {
         vc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.orange], for: .selected)
         vc.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.black], for: .normal)
+    }
+    
+    //MARK: 对tabBar特定设置
+    private func specialSettingToTabBar() -> () {
+        //去掉顶部线条
+        UITabBar.appearance().shadowImage = UIImage()
+        UITabBar.appearance().backgroundImage = UIImage()
+        
+        //为tabBar添加阴影
+        tabBar.layer.backgroundColor = UIColor.white.cgColor
+        tabBar.layer.shadowColor = UIColor.blue.cgColor
+        tabBar.layer.shadowOffset = CGSize(width: 0, height: 0)
+        tabBar.layer.shadowOpacity = 1
+        tabBar.layer.shadowRadius = 1
     }
 
 }
