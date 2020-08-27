@@ -37,7 +37,7 @@ class BaseViewController: UIViewController {
         }
         
         //设置基本容器视图
-        baseContainerView.backgroundColor = .orange
+        baseContainerView.backgroundColor = .lightGray
         view.addSubview(baseContainerView)
         height = tabBarController?.tabBar.bounds.height ?? 0.0
         
@@ -52,7 +52,7 @@ class BaseViewController: UIViewController {
     func setupVisitorView() -> Void {
         print("setupVisitorView")
         let visitorView = Bundle.main.loadNibNamed("VisitorView", owner: nil, options: nil)?.first as? VisitorView
-        if let visitorView = visitorView {
+        if let visitorView = visitorView { 
             baseContainerView.addSubview(visitorView)
             
             visitorView.snp.makeConstraints { (maker) in

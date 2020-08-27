@@ -8,8 +8,21 @@
 
 import UIKit
 
-class VisitorView: UIView {
-
+ class VisitorView: UIView {
+    
+    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var iconHomeImageView: UIImageView!
+    @IBOutlet weak var noteLabel: UILabel!
+    
+    @IBAction func onLoginClickListener(_ sender: Any) {
+        print("login")
+    }
+    
+    @IBAction func onRegisterClickListener(_ sender: Any) {
+        print("register")
+    }
+    
+    
     //initWithFrame是UIView指定构造函数
     //使用纯代码创建UIView对象时，调用此方法
     override init(frame: CGRect) {
