@@ -53,7 +53,6 @@ class BaseViewController: UIViewController {
         print("setupVisitorView")
         let visitorView = Bundle.main.loadNibNamed("VisitorView", owner: nil, options: nil)?.first as? VisitorView
         if let visitorView = visitorView {
-            visitorView.backgroundColor = .blue
             baseContainerView.addSubview(visitorView)
             
             visitorView.snp.makeConstraints { (maker) in

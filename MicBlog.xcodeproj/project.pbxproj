@@ -19,7 +19,6 @@
 		D0BDE22B24EE4993007B83F9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BDE22A24EE4993007B83F9 /* HomeViewController.swift */; };
 		D0D3A7D924F6B7860092D385 /* VisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D3A7D824F6B7860092D385 /* VisitorView.swift */; };
 		D0D3A7DB24F6B7910092D385 /* VisitorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0D3A7DA24F6B7910092D385 /* VisitorView.xib */; };
-		D0D3A7DD24F7389B0092D385 /* BaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0D3A7DC24F7389B0092D385 /* BaseViewController.xib */; };
 		D0F95E1B24F289A800781048 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F95E1A24F289A800781048 /* MainNavigationController.swift */; };
 		D0F95E1E24F28F1500781048 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F95E1D24F28F1500781048 /* UIButton+Extension.swift */; };
 /* End PBXBuildFile section */
@@ -41,7 +40,6 @@
 		D0BDE22A24EE4993007B83F9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D0D3A7D824F6B7860092D385 /* VisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorView.swift; sourceTree = "<group>"; };
 		D0D3A7DA24F6B7910092D385 /* VisitorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VisitorView.xib; sourceTree = "<group>"; };
-		D0D3A7DC24F7389B0092D385 /* BaseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseViewController.xib; sourceTree = "<group>"; };
 		D0F95E1A24F289A800781048 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		D0F95E1D24F28F1500781048 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -181,7 +179,6 @@
 				D0BDE22224EE4948007B83F9 /* MainViewController.swift */,
 				D0F95E1A24F289A800781048 /* MainNavigationController.swift */,
 				D0AD99F924F40B2C009C65AF /* BaseViewController.swift */,
-				D0D3A7DC24F7389B0092D385 /* BaseViewController.xib */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -272,7 +269,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0BDE20C24ED75A7007B83F9 /* Assets.xcassets in Resources */,
-				D0D3A7DD24F7389B0092D385 /* BaseViewController.xib in Resources */,
 				D0BDE21724ED7EA6007B83F9 /* LaunchScreen.storyboard in Resources */,
 				D0D3A7DB24F6B7910092D385 /* VisitorView.xib in Resources */,
 			);
