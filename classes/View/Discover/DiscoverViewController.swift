@@ -13,18 +13,9 @@ class DiscoverViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        visitorView?.setInfo(image: UIImage(named: "visitordiscover_image_message"), title: "长风破浪会有时，直挂云帆济沧海;长风破浪会有时，直挂云帆济沧海;长风破浪会有时，直挂云帆济沧海")
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

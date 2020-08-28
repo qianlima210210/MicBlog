@@ -36,6 +36,17 @@ import UIKit
         super.init(coder: coder)
     }
     
+    //设置图片和提示信息
+    func setInfo(image:UIImage?, title:String?) -> Void {
+        noteLabel.text = title
+        
+        if image == nil {
+            return
+        }
+        iconHomeImageView.image = nil
+        iconImageView.image = image
+    }
+    
 }
 
 

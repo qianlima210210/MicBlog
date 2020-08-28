@@ -13,6 +13,7 @@ class BaseViewController: UIViewController {
     
     var statusBar_NavBar_View: UIView = UIView()
     var baseContainerView: UIView = UIView()
+    var visitorView:VisitorView?
     
     var isLogin = false
 
@@ -37,7 +38,7 @@ class BaseViewController: UIViewController {
         }
         
         //设置基本容器视图
-        baseContainerView.backgroundColor = .lightGray
+        baseContainerView.backgroundColor = UIColor(white: 233.0/255.0, alpha: 1.0)
         view.addSubview(baseContainerView)
         height = tabBarController?.tabBar.bounds.height ?? 0.0
         
@@ -51,7 +52,7 @@ class BaseViewController: UIViewController {
     
     func setupVisitorView() -> Void {
         print("setupVisitorView")
-        let visitorView = Bundle.main.loadNibNamed("VisitorView", owner: nil, options: nil)?.first as? VisitorView
+        visitorView = Bundle.main.loadNibNamed("VisitorView", owner: nil, options: nil)?.first as? VisitorView
         if let visitorView = visitorView { 
             baseContainerView.addSubview(visitorView)
             

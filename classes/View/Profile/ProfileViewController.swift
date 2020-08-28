@@ -13,7 +13,7 @@ class ProfileViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        visitorView?.setInfo(image: UIImage(named: "visitordiscover_image_profile"), title: "酒逢知己千杯少，话不投机半句多;酒逢知己千杯少，话不投机半句多;酒逢知己千杯少，话不投机半句多")
     }
     
 

@@ -13,18 +13,8 @@ class MessageViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        visitorView?.setInfo(image: UIImage(named: "visitordiscover_image_message"), title: "蜀道难，难于上青天;酒逢知己千杯少，话不投机半句多;酒逢知己千杯少，话不投机半句多")
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
