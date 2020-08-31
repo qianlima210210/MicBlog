@@ -41,10 +41,21 @@ import UIKit
         noteLabel.text = title
         
         if image == nil {
+            setAnimation()
             return
         }
         iconHomeImageView.image = nil
         iconImageView.image = image
+    }
+    
+    func setAnimation() -> Void {
+        let animation = CABasicAnimation(keyPath: "transform.rotation")
+        animation.toValue = 2 * Double.pi
+        animation.repeatCount = MAXFLOAT
+        animation.duration = 20
+        animation.isRemovedOnCompletion = false
+        
+        iconImageView.layer.add(animation, forKey: nil)
     }
     
 }
