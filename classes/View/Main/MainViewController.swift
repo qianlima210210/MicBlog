@@ -69,7 +69,7 @@ extension MainViewController {
     
     func addChild(title:String, imageName:String, vc:UIViewController) {
         setupTabbarItemTextStyle(vc: vc)
-        vc.tabBarItem.title = title
+        vc.title = title
         vc.tabBarItem.image = UIImage(named: imageName)?.withRenderingMode(.alwaysOriginal)
         vc.tabBarItem.selectedImage = UIImage(named: imageName + "_selected")?.withRenderingMode(.alwaysOriginal)
         

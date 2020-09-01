@@ -12,10 +12,12 @@ import SnapKit
 class BaseViewController: UIViewController {
     
     var statusBar_NavBar_View: UIView = UIView()
+    var navBar_View: UIView = UIView()
+    let titleLabel = UILabel()
     var baseContainerView: UIView = UIView()
     var visitorView:VisitorView?
     
-    var isLogin = true
+    var isLogin = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +39,52 @@ class BaseViewController: UIViewController {
             maker.height.equalTo(height)
         }
         
+        //添加导航栏视图
+        navBar_View.backgroundColor = UIColor.white
+        statusBar_NavBar_View.addSubview(navBar_View)
+        navBar_View.snp.makeConstraints { (maker) in
+            maker.left.equalToSuperview()
+            maker.right.equalToSuperview()
+            maker.bottom.equalToSuperview()
+            maker.height.equalTo((navigationController?.navigationBar.bounds.height ?? 0.0))
+        }
+        
+        //添加导航栏上的登录、注册按钮、标题标签
+        let login = UIButton(type: .custom)
+        login.addTarget(self, action: #selector(onLoginClickListener), for: .touchUpInside)
+        login.setTitle("登录", for: .normal)
+        login.setTitleColor(.orange, for: .normal)
+        navBar_View.addSubview(login)
+        login.snp.makeConstraints { (maker) in
+            maker.left.equalTo(navBar_View)
+            maker.top.equalToSuperview()
+            maker.bottom.equalToSuperview()
+            maker.width.equalTo(60)
+        }
+        
+        let register = UIButton(type: .custom)
+        register.addTarget(self, action: #selector(onRegisterClickListener), for: .touchUpInside)
+        register.setTitle("注册", for: .normal)
+        register.setTitleColor(.orange, for: .normal)
+        navBar_View.addSubview(register)
+        register.snp.makeConstraints { (maker) in
+            maker.right.equalTo(navBar_View)
+            maker.top.equalToSuperview()
+            maker.bottom.equalToSuperview()
+            maker.width.equalTo(60)
+        }
+        
+        titleLabel.textAlignment = .center
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
+        titleLabel.textColor = .orange
+        navBar_View.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { (maker) in
+            maker.left.equalTo(login.snp.right)
+            maker.right.equalTo(register.snp.left)
+            maker.top.equalToSuperview()
+            maker.bottom.equalToSuperview()
+        }
+        
         //设置基本容器视图
         baseContainerView.backgroundColor = UIColor(white: 233.0/255.0, alpha: 1.0)
         view.addSubview(baseContainerView)
@@ -50,9 +98,15 @@ class BaseViewController: UIViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        titleLabel.text = self.title
+    }
+    
     func setupVisitorView() -> Void {
         print("setupVisitorView")
         visitorView = Bundle.main.loadNibNamed("VisitorView", owner: nil, options: nil)?.first as? VisitorView
+        visitorView?.delegate = self
         if let visitorView = visitorView { 
             baseContainerView.addSubview(visitorView)
             
@@ -70,4 +124,16 @@ class BaseViewController: UIViewController {
         print("setupContentContainerView")
     }
 
+}
+
+extension BaseViewController : VisitorViewDelegate{
+    @objc func onLoginClickListener() {
+        print("login")
+    }
+    
+    @objc func onRegisterClickListener() {
+        print("register")
+    }
+    
+    
 }

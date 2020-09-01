@@ -8,18 +8,29 @@
 
 import UIKit
 
+//MARK: 定义协议
+protocol VisitorViewDelegate : NSObjectProtocol {
+    func onLoginClickListener()
+    func onRegisterClickListener()
+}
+
  class VisitorView: UIView {
+    
+    //MARK:定义代理
+    weak var delegate: VisitorViewDelegate?
     
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var iconHomeImageView: UIImageView!
     @IBOutlet weak var noteLabel: UILabel!
     
     @IBAction func onLoginClickListener(_ sender: Any) {
-        print("login")
+        
+        delegate?.onLoginClickListener()
     }
     
     @IBAction func onRegisterClickListener(_ sender: Any) {
-        print("register")
+        
+        delegate?.onRegisterClickListener()
     }
     
     
