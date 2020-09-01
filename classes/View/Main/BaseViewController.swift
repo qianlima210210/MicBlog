@@ -15,13 +15,13 @@ class BaseViewController: UIViewController {
     var baseContainerView: UIView = UIView()
     var visitorView:VisitorView?
     
-    var isLogin = false
+    var isLogin = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
         initSbuViews()
         
-        isLogin ? setupBaseContainerView() : setupVisitorView()
+        isLogin ? setupContentContainerView() : setupVisitorView()
     }
     
     func initSbuViews() -> Void {
@@ -65,8 +65,9 @@ class BaseViewController: UIViewController {
         }
     }
 
-    func setupBaseContainerView() -> Void {
-        print("setupBaseContainerView")
+    //具体由子类实现
+    func setupContentContainerView() -> Void {
+        print("setupContentContainerView")
     }
 
 }

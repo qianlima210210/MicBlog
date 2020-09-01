@@ -23,7 +23,7 @@ import UIKit
         //会创建tabBar中的所有控制器对应的按钮
         super.viewWillAppear(animated)
         
-        //将按钮移到同级最前
+        //将按钮移到同级最前(为什么放在这里，因为这里才会创建tabBar中的所有控制器对应的按钮)
         tabBar.bringSubviewToFront(composeBtn)
         
     }
@@ -45,6 +45,13 @@ extension MainViewController {
         composeBtn.frame = CGRect(x: 2 * width, y: 1, width: width, height: tabBar.bounds.height)
         
         composeBtn.addTarget(self, action: #selector(composeBtnOnClickListener(sender:)), for: .touchUpInside)
+        
+
+        //这里不会创建tabBar中的所有控制器对应的按钮
+        for item in tabBar.subviews {
+            print(item)
+        }
+
         
     }
     
