@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		321D2B92DAE87EC8D4B16C16 /* Pods_MicBlog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCEDD65BFC300DE5E194950C /* Pods_MicBlog.framework */; };
+		D058C368250FB6DA00E86869 /* NetworkRequestEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D058C367250FB6DA00E86869 /* NetworkRequestEngine.swift */; };
 		D0AD99FA24F40B2C009C65AF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AD99F924F40B2C009C65AF /* BaseViewController.swift */; };
 		D0BDE20324ED75A5007B83F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BDE20224ED75A5007B83F9 /* AppDelegate.swift */; };
 		D0BDE20C24ED75A7007B83F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0BDE20B24ED75A7007B83F9 /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 		071DAFA2A93DEDB8F098A14C /* Pods-MicBlog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MicBlog.debug.xcconfig"; path = "Target Support Files/Pods-MicBlog/Pods-MicBlog.debug.xcconfig"; sourceTree = "<group>"; };
 		7E6B13856451152FD4645066 /* Pods-MicBlog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MicBlog.release.xcconfig"; path = "Target Support Files/Pods-MicBlog/Pods-MicBlog.release.xcconfig"; sourceTree = "<group>"; };
 		CCEDD65BFC300DE5E194950C /* Pods_MicBlog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MicBlog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D058C367250FB6DA00E86869 /* NetworkRequestEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestEngine.swift; sourceTree = "<group>"; };
 		D0AD99F924F40B2C009C65AF /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		D0BDE1FF24ED75A5007B83F9 /* 微博.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "微博.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0BDE20224ED75A5007B83F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				D0F95E1C24F28EF500781048 /* Extension */,
+				D058C367250FB6DA00E86869 /* NetworkRequestEngine.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				D0D3A7D924F6B7860092D385 /* VisitorView.swift in Sources */,
 				D0BDE22924EE4984007B83F9 /* DiscoverViewController.swift in Sources */,
 				D0BDE22B24EE4993007B83F9 /* HomeViewController.swift in Sources */,
+				D058C368250FB6DA00E86869 /* NetworkRequestEngine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
