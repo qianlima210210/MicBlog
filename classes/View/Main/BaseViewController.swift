@@ -129,6 +129,9 @@ class BaseViewController: UIViewController {
 extension BaseViewController : VisitorViewDelegate{
     @objc func onLoginClickListener() {
         print("login")
+        let nav = UINavigationController(rootViewController: OAuthViewController(nibName: "OAuthViewController", bundle: nil))
+        nav.modalPresentationStyle = .fullScreen
+        self.present(nav, animated: true, completion: nil)
     }
     
     @objc func onRegisterClickListener() {
