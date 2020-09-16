@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,24 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.makeKeyAndVisible()
         
-        NetworkRequestEngine.engine.request("http://httpbin.org/post", method: .post, parameters: ["name":"Jone", "age":12], encoding: JSONEncoding.default, headers: ["Accept":"application/json"]){(dataResponse) in 
-            
-            switch dataResponse.result{
-                case .success(let value):
-                    let className: AnyClass! = object_getClass(value)
-                    print(className!)
-                    print(value)
-                
-                case .failure(let failDic):
-                    print(failDic)
-            }
-        }
-        
         return true
     }
 
 
 }
+
 
 /*
  ("http://httpbin.org/post", method: .post, parameters: ["name":"Jone", "age":12], encoding: URLEncoding.default, headers: ["Accept":"application/json"])
