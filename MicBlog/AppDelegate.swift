@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -22,10 +23,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.makeKeyAndVisible()
         
+        WeiboSDK.enableDebugMode(true)
+        WeiboSDK.registerApp(NetworkRequestEngine.engine.appKey)
+        
+        return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        WeiboSDK.handleOpen(url, delegate: self)
         return true
     }
 
+}
 
+extension AppDelegate : WeiboSDKDelegate {
+    func didReceiveWeiboRequest(_ request: WBBaseRequest!) {
+        
+    }
+    
+    func didReceiveWeiboResponse(_ response: WBBaseResponse!) {
+        //从这里获取token
+        let rp = response as! WBAuthorizeResponse
+        NetworkRequestEngine.engine.accessToken = rp.accessToken
+    }
+    
+    
 }
 
 

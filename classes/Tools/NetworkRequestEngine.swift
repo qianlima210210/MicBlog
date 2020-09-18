@@ -16,7 +16,8 @@ class NetworkRequestEngine: NSObject {
     //MARK: 应用程序信息
     let appKey = "1069040971"
     let appSecret = "dced87f388fc65cf3eb6861e0614be24"
-    let redirectUrl = "https://api.weibo.com/oauth2/default.html"
+    let redirectUrl = "https://m.baidu.com"
+    var accessToken = ""
     
 }
 
@@ -24,8 +25,17 @@ class NetworkRequestEngine: NSObject {
 extension NetworkRequestEngine {
     var oauthUrl:String{
         //https://open.weibo.cn/oauth2/authorize
-        let str = "https://open.weibo.cn/oauth2/authorize?client_id=\(appKey)&redirect_uri=\(redirectUrl)"
+        let str = "https://open.weibo.cn/oauth2/authorize?client_id=\(appKey)&redirect_uri=\(redirectUrl)&display=mobile"
         return str
+    }
+    
+    func get_access_token(code:String) -> Void {
+        let str = "https://api.weibo.com/oauth2/access_token"
+        let parameters = ["client_id":appKey, "client_secret":appSecret, "grant_type":"authorization_code", "code":code, "redirect_uri":redirectUrl]
+        
+        jsonRequest(str, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: ["Accept":"application/json"]) { (dataResponse) in
+            print(dataResponse)
+        }
     }
 }
 

@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		321D2B92DAE87EC8D4B16C16 /* Pods_MicBlog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCEDD65BFC300DE5E194950C /* Pods_MicBlog.framework */; };
 		D058C368250FB6DA00E86869 /* NetworkRequestEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D058C367250FB6DA00E86869 /* NetworkRequestEngine.swift */; };
-		D07945BD25110C9800EE75FE /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07945BB25110C9800EE75FE /* OAuthViewController.swift */; };
-		D07945BE25110C9800EE75FE /* OAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D07945BC25110C9800EE75FE /* OAuthViewController.xib */; };
+		D063ED602513534000F0DA4A /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D063ED5C2513534000F0DA4A /* WeiboSDK.bundle */; };
+		D063ED612513534000F0DA4A /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D063ED5D2513534000F0DA4A /* libWeiboSDK.a */; };
 		D0AD99FA24F40B2C009C65AF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AD99F924F40B2C009C65AF /* BaseViewController.swift */; };
 		D0BDE20324ED75A5007B83F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BDE20224ED75A5007B83F9 /* AppDelegate.swift */; };
 		D0BDE20C24ED75A7007B83F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0BDE20B24ED75A7007B83F9 /* Assets.xcassets */; };
@@ -31,8 +31,11 @@
 		7E6B13856451152FD4645066 /* Pods-MicBlog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MicBlog.release.xcconfig"; path = "Target Support Files/Pods-MicBlog/Pods-MicBlog.release.xcconfig"; sourceTree = "<group>"; };
 		CCEDD65BFC300DE5E194950C /* Pods_MicBlog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MicBlog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D058C367250FB6DA00E86869 /* NetworkRequestEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestEngine.swift; sourceTree = "<group>"; };
-		D07945BB25110C9800EE75FE /* OAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
-		D07945BC25110C9800EE75FE /* OAuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OAuthViewController.xib; sourceTree = "<group>"; };
+		D063ED5C2513534000F0DA4A /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
+		D063ED5D2513534000F0DA4A /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
+		D063ED5E2513534000F0DA4A /* WBHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBHttpRequest.h; sourceTree = "<group>"; };
+		D063ED5F2513534000F0DA4A /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
+		D063ED652513557700F0DA4A /* MicBlog-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MicBlog-Bridging-Header.h"; sourceTree = "<group>"; };
 		D0AD99F924F40B2C009C65AF /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		D0BDE1FF24ED75A5007B83F9 /* 微博.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "微博.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0BDE20224ED75A5007B83F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +59,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				321D2B92DAE87EC8D4B16C16 /* Pods_MicBlog.framework in Frameworks */,
+				D063ED612513534000F0DA4A /* libWeiboSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,13 +75,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		D07945BA25110BD700EE75FE /* OAuth */ = {
+		D063ED5B2513534000F0DA4A /* libWeiboSDK */ = {
 			isa = PBXGroup;
 			children = (
-				D07945BB25110C9800EE75FE /* OAuthViewController.swift */,
-				D07945BC25110C9800EE75FE /* OAuthViewController.xib */,
+				D063ED5C2513534000F0DA4A /* WeiboSDK.bundle */,
+				D063ED5D2513534000F0DA4A /* libWeiboSDK.a */,
+				D063ED5E2513534000F0DA4A /* WBHttpRequest.h */,
+				D063ED5F2513534000F0DA4A /* WeiboSDK.h */,
 			);
-			path = OAuth;
+			path = libWeiboSDK;
 			sourceTree = "<group>";
 		};
 		D0BDE1F624ED75A5007B83F9 = {
@@ -131,8 +137,10 @@
 		D0BDE21A24EE2F83007B83F9 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				D063ED5B2513534000F0DA4A /* libWeiboSDK */,
 				D0F95E1C24F28EF500781048 /* Extension */,
 				D058C367250FB6DA00E86869 /* NetworkRequestEngine.swift */,
+				D063ED652513557700F0DA4A /* MicBlog-Bridging-Header.h */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -147,7 +155,6 @@
 		D0BDE21C24EE2F83007B83F9 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D07945BA25110BD700EE75FE /* OAuth */,
 				D0BDE21D24EE2F83007B83F9 /* Home */,
 				D0BDE21E24EE2F83007B83F9 /* Discover */,
 				D0BDE21F24EE2F83007B83F9 /* Message */,
@@ -259,6 +266,7 @@
 				TargetAttributes = {
 					D0BDE1FE24ED75A5007B83F9 = {
 						CreatedOnToolsVersion = 11.6;
+						LastSwiftMigration = 1200;
 					};
 				};
 			};
@@ -285,8 +293,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D07945BE25110C9800EE75FE /* OAuthViewController.xib in Resources */,
 				D0BDE20C24ED75A7007B83F9 /* Assets.xcassets in Resources */,
+				D063ED602513534000F0DA4A /* WeiboSDK.bundle in Resources */,
 				D0BDE21724ED7EA6007B83F9 /* LaunchScreen.storyboard in Resources */,
 				D0D3A7DB24F6B7910092D385 /* VisitorView.xib in Resources */,
 			);
@@ -345,7 +353,6 @@
 				D0BDE20324ED75A5007B83F9 /* AppDelegate.swift in Sources */,
 				D0BDE22724EE4976007B83F9 /* MessageViewController.swift in Sources */,
 				D0BDE22324EE4948007B83F9 /* MainViewController.swift in Sources */,
-				D07945BD25110C9800EE75FE /* OAuthViewController.swift in Sources */,
 				D0F95E1B24F289A800781048 /* MainNavigationController.swift in Sources */,
 				D0AD99FA24F40B2C009C65AF /* BaseViewController.swift in Sources */,
 				D0F95E1E24F28F1500781048 /* UIButton+Extension.swift in Sources */,
@@ -478,6 +485,7 @@
 			baseConfigurationReference = 071DAFA2A93DEDB8F098A14C /* Pods-MicBlog.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 99HPKU5V3L;
 				INFOPLIST_FILE = MicBlog/Info.plist;
@@ -485,8 +493,50 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/classes/Tools/libWeiboSDK",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"Alamofire\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreFoundation\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MBProgressHUD\"",
+					"-framework",
+					"\"MJRefresh\"",
+					"-framework",
+					"\"Masonry\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"SnapKit\"",
+					"-framework",
+					"\"TYCyclePagerView\"",
+					"-framework",
+					"\"TYPagerController\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"YYModel\"",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nn.MicBlog;
 				PRODUCT_NAME = "微博";
+				SWIFT_OBJC_BRIDGING_HEADER = "classes/Tools/MicBlog-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -497,6 +547,7 @@
 			baseConfigurationReference = 7E6B13856451152FD4645066 /* Pods-MicBlog.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 99HPKU5V3L;
 				INFOPLIST_FILE = MicBlog/Info.plist;
@@ -504,8 +555,49 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/classes/Tools/libWeiboSDK",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"Alamofire\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreFoundation\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MBProgressHUD\"",
+					"-framework",
+					"\"MJRefresh\"",
+					"-framework",
+					"\"Masonry\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"SnapKit\"",
+					"-framework",
+					"\"TYCyclePagerView\"",
+					"-framework",
+					"\"TYPagerController\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"YYModel\"",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nn.MicBlog;
 				PRODUCT_NAME = "微博";
+				SWIFT_OBJC_BRIDGING_HEADER = "classes/Tools/MicBlog-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

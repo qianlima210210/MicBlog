@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 
+
 class BaseViewController: UIViewController {
     
     var statusBar_NavBar_View: UIView = UIView()
@@ -129,9 +130,10 @@ class BaseViewController: UIViewController {
 extension BaseViewController : VisitorViewDelegate{
     @objc func onLoginClickListener() {
         print("login")
-        let nav = UINavigationController(rootViewController: OAuthViewController(nibName: "OAuthViewController", bundle: nil))
-        nav.modalPresentationStyle = .fullScreen
-        self.present(nav, animated: true, completion: nil)
+        let request:WBAuthorizeRequest = WBAuthorizeRequest.request() as! WBAuthorizeRequest
+        request.redirectURI = NetworkRequestEngine.engine.redirectUrl
+        request.scope = "all"
+        WeiboSDK.send(request)
     }
     
     @objc func onRegisterClickListener() {
