@@ -45,6 +45,11 @@ extension AppDelegate : WeiboSDKDelegate {
         //从这里获取token
         let rp = response as! WBAuthorizeResponse
         NetworkRequestEngine.engine.accessToken = rp.accessToken
+        
+        let result:[String:Any] = ["userID":rp.userID ?? "", "accessToken":rp.accessToken ?? "", "expirationDate":rp.expirationDate ?? NSDate(), "refreshToken":rp.refreshToken ?? ""]
+        
+        let userAccount = UserAccount(dict: result)
+        print(userAccount.description)
     }
     
     

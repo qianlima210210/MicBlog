@@ -17,7 +17,10 @@ class NetworkRequestEngine: NSObject {
     let appKey = "1069040971"
     let appSecret = "dced87f388fc65cf3eb6861e0614be24"
     let redirectUrl = "https://m.baidu.com"
-    var accessToken = ""
+    var accessToken = ""    //"2.002SUK3C_5a2KB1dfa5ebb9dVk7ZpC"
+    
+    typealias JsonNetworkCallback = (AFDataResponse<Any>) -> Void
+    typealias StringNetworkCallback = (AFDataResponse<String>) -> Void
     
 }
 
@@ -44,7 +47,7 @@ extension NetworkRequestEngine {
     //返回一个json对象
     func jsonRequest(_ convertible: URLConvertible, method: HTTPMethod = .get, parameters: Parameters? = nil,
                  encoding: ParameterEncoding = JSONEncoding.default,
-                 headers: HTTPHeaders? = nil, completionHandler: @escaping (AFDataResponse<Any>) -> Void) -> Void {
+                 headers: HTTPHeaders? = nil, completionHandler: @escaping JsonNetworkCallback) -> Void {
         let request = AF.request(convertible, method: method, parameters: parameters, encoding: encoding, headers: headers, interceptor: nil, requestModifier: nil)
         request.responseJSON { (dataResponse) in
             completionHandler(dataResponse)
@@ -54,7 +57,7 @@ extension NetworkRequestEngine {
     //返回一个字符串对象
     func stringRequest(_ convertible: URLConvertible, method: HTTPMethod = .get, parameters: Parameters? = nil,
                  encoding: ParameterEncoding = JSONEncoding.default,
-                 headers: HTTPHeaders? = nil, completionHandler: @escaping (AFDataResponse<String>) -> Void) -> Void {
+                 headers: HTTPHeaders? = nil, completionHandler: @escaping StringNetworkCallback) -> Void {
         let request = AF.request(convertible, method: method, parameters: parameters, encoding: encoding, headers: headers, interceptor: nil, requestModifier: nil)
         request.responseString { (dataResponse) in
             completionHandler(dataResponse)

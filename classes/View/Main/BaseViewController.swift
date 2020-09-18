@@ -15,10 +15,11 @@ class BaseViewController: UIViewController {
     var statusBar_NavBar_View: UIView = UIView()
     var navBar_View: UIView = UIView()
     let titleLabel = UILabel()
+    
     var baseContainerView: UIView = UIView()
     var visitorView:VisitorView?
     
-    var isLogin = false
+    var isLogin = NetworkRequestEngine.engine.accessToken.count > 0 ? true : false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +51,7 @@ class BaseViewController: UIViewController {
             maker.height.equalTo((navigationController?.navigationBar.bounds.height ?? 0.0))
         }
         
+        /*
         //添加导航栏上的登录、注册按钮、标题标签
         let login = UIButton(type: .custom)
         login.addTarget(self, action: #selector(onLoginClickListener), for: .touchUpInside)
@@ -74,14 +76,15 @@ class BaseViewController: UIViewController {
             maker.bottom.equalToSuperview()
             maker.width.equalTo(60)
         }
+        */
         
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
         titleLabel.textColor = .orange
         navBar_View.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (maker) in
-            maker.left.equalTo(login.snp.right)
-            maker.right.equalTo(register.snp.left)
+            maker.left.equalToSuperview()
+            maker.right.equalToSuperview()
             maker.top.equalToSuperview()
             maker.bottom.equalToSuperview()
         }
