@@ -16,7 +16,9 @@ class HomeViewController: BaseViewController {
         visitorView?.setInfo(image: nil, title: "大漠孤山尽，长河落日圆;大漠孤山尽，长河落日圆;大漠孤山尽，长河落日圆")
     }
     
-
+    override func setupContentContainerView() {
+        
+    }
 
 
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 
 @UIApplicationMain
@@ -44,14 +45,35 @@ extension AppDelegate : WeiboSDKDelegate {
     func didReceiveWeiboResponse(_ response: WBBaseResponse!) {
         //从这里获取token
         let rp = response as! WBAuthorizeResponse
-        NetworkRequestEngine.engine.accessToken = rp.accessToken
+        UserAccount.userAccount.accessToken = rp.accessToken
         
         let result:[String:Any] = ["userID":rp.userID ?? "", "accessToken":rp.accessToken ?? "", "expirationDate":rp.expirationDate ?? NSDate(), "refreshToken":rp.refreshToken ?? ""]
         
-        let userAccount = UserAccount(dict: result)
-        print(userAccount.description)
+        UserAccount.userAccount.setValuesForKeys(result)
+        
+        //利用token获取用户信息
+        if (UserAccount.userAccount.accessToken?.count ?? 0) > 0 {
+            MBProgressHUD.showAdded(to: window!, animated: true)
+            
+            NetworkRequestEngine.engine.getUserInfo { [weak self] (dataResponse) in
+                MBProgressHUD.hide(for: self!.window!, animated: true)
+                
+                switch dataResponse.result{
+                    case .success(let value):
+                        guard let dic =  value as? [String:Any] else {
+                            return
+                        }
+                        
+                        print(dic["avatar_large"] ?? "")
+                        print(dic["name"] ?? "")
+                        
+                    case .failure(let failDic):
+                        print(failDic)
+                }
+            }
+        }
     }
-    
+
     
 }
 

@@ -19,7 +19,7 @@ class BaseViewController: UIViewController {
     var baseContainerView: UIView = UIView()
     var visitorView:VisitorView?
     
-    var isLogin = NetworkRequestEngine.engine.accessToken.count > 0 ? true : false
+    var isLogin = (UserAccount.userAccount.accessToken?.count ?? 0) > 0 ? true : false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -125,7 +125,7 @@ class BaseViewController: UIViewController {
 
     //具体由子类实现
     func setupContentContainerView() -> Void {
-        print("setupContentContainerView")
+        
     }
 
 }
