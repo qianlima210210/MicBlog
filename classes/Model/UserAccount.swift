@@ -8,20 +8,34 @@
 
 import Foundation
 
-@objcMembers class UserAccount: NSObject {
+@objcMembers class UserAccount: NSObject, NSCoding {
     
-    static let userAccount = UserAccount()
+    static var userAccount: UserAccount?
     
     var userID: String?
-    var accessToken: String? /*= "2.002SUK3C_5a2KB1dfa5ebb9dVk7ZpC"*/{
-        didSet{
-            
-        }
-    }
+    var accessToken: String?
     var expirationDate: NSDate?
     var refreshToken: String?
+    var avatar_large: String?
+    var name: String?
     
-    override init() {
+    static var path: String {
+        let document =  NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first as NSString?
+        if let document = document {
+            return document.appendingPathComponent("userInfo.plist")
+        }
+        return ""
+    }
+    
+    var isExpired: Bool{
+        return UserAccount.userAccount?.expirationDate?.compare(NSDate() as Date) == ComparisonResult.orderedAscending
+    }
+    
+    var isLogin: Bool {
+        return (UserAccount.userAccount?.accessToken?.count ?? 0) > 0 ? true : false
+    }
+    
+    private override init() {
         super.init()
     }
     
@@ -40,7 +54,44 @@ import Foundation
     }
     
     override var description: String {
-        return dictionaryWithValues(forKeys: ["userID", "accessToken", "expirationDate", "refreshToken"]).description
+        return dictionaryWithValues(forKeys: ["userID", "accessToken", "expirationDate", "refreshToken", "avatar_large", "name"]).description
     }
+    
+    func saveToLocal() -> Void {
+        NSKeyedArchiver.archiveRootObject(self, toFile: UserAccount.path)
+    }
+    
+    class func readFromLocal() ->Void {
+        userAccount = NSKeyedUnarchiver.unarchiveObject(withFile: UserAccount.path) as? UserAccount
+        if userAccount == nil {
+            userAccount = UserAccount()
+        }else{
+            //接着判断是否已过期
+            if userAccount?.isExpired == true {
+                userAccount = UserAccount()
+            }
+
+        }
+    }
+    
+    //MARK:NSCoding
+    func encode(with coder: NSCoder){
+        coder.encode(userID, forKey: "userID")
+        coder.encode(accessToken, forKey: "accessToken")
+        coder.encode(expirationDate, forKey: "expirationDate")
+        coder.encode(refreshToken, forKey: "refreshToken")
+        coder.encode(avatar_large, forKey: "avatar_large")
+        coder.encode(name, forKey: "name")
+    }
+    
+    required init?(coder: NSCoder){
+        userID = coder.decodeObject(forKey: "userID") as? String
+        accessToken = coder.decodeObject(forKey: "accessToken") as? String
+        expirationDate = coder.decodeObject(forKey: "expirationDate") as? NSDate
+        refreshToken = coder.decodeObject(forKey: "refreshToken") as? String
+        avatar_large = coder.decodeObject(forKey: "avatar_large") as? String
+        name = coder.decodeObject(forKey: "name") as? String
+    }
+    
 
 }

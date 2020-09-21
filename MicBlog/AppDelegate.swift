@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        UserAccount.readFromLocal()
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
@@ -29,6 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+    
+    //NSString*documentPath =NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES).firstObject;
+
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         WeiboSDK.handleOpen(url, delegate: self)
@@ -45,14 +49,14 @@ extension AppDelegate : WeiboSDKDelegate {
     func didReceiveWeiboResponse(_ response: WBBaseResponse!) {
         //从这里获取token
         let rp = response as! WBAuthorizeResponse
-        UserAccount.userAccount.accessToken = rp.accessToken
+        UserAccount.userAccount?.accessToken = rp.accessToken
         
         let result:[String:Any] = ["userID":rp.userID ?? "", "accessToken":rp.accessToken ?? "", "expirationDate":rp.expirationDate ?? NSDate(), "refreshToken":rp.refreshToken ?? ""]
         
-        UserAccount.userAccount.setValuesForKeys(result)
+        UserAccount.userAccount?.setValuesForKeys(result)
         
         //利用token获取用户信息
-        if (UserAccount.userAccount.accessToken?.count ?? 0) > 0 {
+        if (UserAccount.userAccount?.accessToken?.count ?? 0) > 0 {
             MBProgressHUD.showAdded(to: window!, animated: true)
             
             NetworkRequestEngine.engine.getUserInfo { [weak self] (dataResponse) in
@@ -63,9 +67,11 @@ extension AppDelegate : WeiboSDKDelegate {
                         guard let dic =  value as? [String:Any] else {
                             return
                         }
+                        UserAccount.userAccount?.avatar_large = (dic["avatar_large"] as? String) ?? ""
+                        UserAccount.userAccount?.name = (dic["name"] as? String) ?? ""
+                       
+                        UserAccount.userAccount?.saveToLocal()
                         
-                        print(dic["avatar_large"] ?? "")
-                        print(dic["name"] ?? "")
                         
                     case .failure(let failDic):
                         print(failDic)

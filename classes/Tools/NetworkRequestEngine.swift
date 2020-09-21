@@ -27,7 +27,7 @@ class NetworkRequestEngine: NSObject {
 extension NetworkRequestEngine {
     func getUserInfo(completionHandler: @escaping JsonNetworkCallback) -> Void {
         let url = "https://api.weibo.com/2/users/show.json"
-        let parameters = ["access_token":UserAccount.userAccount.accessToken!, "uid":UserAccount.userAccount.userID!]
+        let parameters = ["access_token":UserAccount.userAccount!.accessToken!, "uid":UserAccount.userAccount!.userID!]
         
         jsonRequest(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: ["Accept":"application/json"]) { (dataResponse) in
             completionHandler(dataResponse)

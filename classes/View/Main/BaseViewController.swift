@@ -19,7 +19,7 @@ class BaseViewController: UIViewController {
     var baseContainerView: UIView = UIView()
     var visitorView:VisitorView?
     
-    var isLogin = (UserAccount.userAccount.accessToken?.count ?? 0) > 0 ? true : false
+    var isLogin = (UserAccount.userAccount?.isLogin)!
 
     override func viewDidLoad() {
         super.viewDidLoad()
