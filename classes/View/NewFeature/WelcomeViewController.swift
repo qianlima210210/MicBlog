@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class WelcomeViewController: UIViewController {
 
@@ -46,5 +47,9 @@ extension WelcomeViewController {
     func setupUI() -> Void {
         avatar.layer.cornerRadius = avatar.bounds.width / 2.0
         avatarBottomConstraint.constant = UIScreen.main.bounds.height * 0.3
+        
+        let url = URL(string: (UserAccount.userAccount?.avatar_large ?? ""))
+        avatar.sd_setImage(with: url, placeholderImage: UIImage(named: "avatar_default_big"), options: [], context: nil)
+        
     }
 }
