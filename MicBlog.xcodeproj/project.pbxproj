@@ -29,6 +29,7 @@
 		D0BDE22B24EE4993007B83F9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BDE22A24EE4993007B83F9 /* HomeViewController.swift */; };
 		D0D3A7D924F6B7860092D385 /* VisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D3A7D824F6B7860092D385 /* VisitorView.swift */; };
 		D0D3A7DB24F6B7910092D385 /* VisitorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0D3A7DA24F6B7910092D385 /* VisitorView.xib */; };
+		D0F6AE9E2532CC0A00AE14F9 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F6AE9D2532CC0A00AE14F9 /* Common.swift */; };
 		D0F95E1B24F289A800781048 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F95E1A24F289A800781048 /* MainNavigationController.swift */; };
 		D0F95E1E24F28F1500781048 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F95E1D24F28F1500781048 /* UIButton+Extension.swift */; };
 /* End PBXBuildFile section */
@@ -63,6 +64,7 @@
 		D0BDE22A24EE4993007B83F9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D0D3A7D824F6B7860092D385 /* VisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorView.swift; sourceTree = "<group>"; };
 		D0D3A7DA24F6B7910092D385 /* VisitorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VisitorView.xib; sourceTree = "<group>"; };
+		D0F6AE9D2532CC0A00AE14F9 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		D0F95E1A24F289A800781048 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		D0F95E1D24F28F1500781048 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -168,6 +170,7 @@
 				D0F95E1C24F28EF500781048 /* Extension */,
 				D058C367250FB6DA00E86869 /* NetworkRequestEngine.swift */,
 				D063ED652513557700F0DA4A /* MicBlog-Bridging-Header.h */,
+				D0F6AE9D2532CC0A00AE14F9 /* Common.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0F6AE9E2532CC0A00AE14F9 /* Common.swift in Sources */,
 				D0BDE22524EE4966007B83F9 /* ProfileViewController.swift in Sources */,
 				D0BDE20324ED75A5007B83F9 /* AppDelegate.swift in Sources */,
 				D0BDE22724EE4976007B83F9 /* MessageViewController.swift in Sources */,
@@ -535,6 +539,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/classes/Tools/libWeiboSDK",
 				);
+				MARKETING_VERSION = 1.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-framework",
@@ -597,6 +602,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/classes/Tools/libWeiboSDK",
 				);
+				MARKETING_VERSION = 1.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-framework",

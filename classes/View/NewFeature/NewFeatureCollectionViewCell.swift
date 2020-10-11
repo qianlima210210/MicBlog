@@ -44,5 +44,6 @@ class NewFeatureCollectionViewCell: UICollectionViewCell {
 
     @IBAction func enterBtnClickListener(_ sender: UIButton) {
         print("enterBtnClickListener")
+        NotificationCenter.default.post(name: NSNotification.Name(SwitchRootViewControllerNotification), object: nil, userInfo: nil)
     }
 }

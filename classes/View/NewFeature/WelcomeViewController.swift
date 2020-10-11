@@ -33,7 +33,7 @@ class WelcomeViewController: UIViewController {
             UIView.animate(withDuration: 0.3) {
                 self.welback.alpha = 1.0
             } completion: { (_) in
-                
+                NotificationCenter.default.post(name: NSNotification.Name(SwitchRootViewControllerNotification), object: nil, userInfo: nil)
             }
 
         }

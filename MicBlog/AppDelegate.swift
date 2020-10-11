@@ -25,12 +25,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.makeKeyAndVisible()
         
-        print(isNewVersion)
-        
         WeiboSDK.enableDebugMode(true)
         WeiboSDK.registerApp(NetworkRequestEngine.engine.appKey)
         
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(SwitchRootViewControllerNotification), object: nil, queue: nil) {[weak self] (no) in
+            
+            var rootViewController: UIViewController?
+            if no.object != nil {
+                rootViewController = WelcomeViewController()
+            }else{
+                rootViewController = MainViewController()
+            }
+            self?.window?.rootViewController = rootViewController
+        }
+        
         return true
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name(SwitchRootViewControllerNotification), object: nil)
     }
     
     //NSString*documentPath =NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES).firstObject;
@@ -48,7 +61,7 @@ extension AppDelegate {
     
     private var rootVC: UIViewController {
         //为什么这里直接解包，因为UserAccount.readFromLocal()已调用过
-        if (UserAccount.userAccount?.isLogin)! {
+        if UserAccount.userAccount?.isLogin ?? false {
             return isNewVersion ? NewFeatureCollectionViewController() : WelcomeViewController()
         }
         
@@ -106,6 +119,8 @@ extension AppDelegate : WeiboSDKDelegate {
                         UserAccount.userAccount?.name = (dic["name"] as? String) ?? ""
                        
                         UserAccount.userAccount?.saveToLocal()
+                        
+                        NotificationCenter.default.post(name: NSNotification.Name(SwitchRootViewControllerNotification), object: "welcome", userInfo: nil)
                         
                         
                     case .failure(let failDic):
