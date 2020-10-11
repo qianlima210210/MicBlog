@@ -21,9 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
-        window?.rootViewController = WelcomeViewController() //MainViewController()//NewFeatureCollectionViewController()
+        window?.rootViewController = rootVC
         
         window?.makeKeyAndVisible()
+        
+        print(isNewVersion)
         
         WeiboSDK.enableDebugMode(true)
         WeiboSDK.registerApp(NetworkRequestEngine.engine.appKey)
@@ -39,6 +41,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+}
+
+//MARK: 启动界面切换
+extension AppDelegate {
+    
+    private var rootVC: UIViewController {
+        //为什么这里直接解包，因为UserAccount.readFromLocal()已调用过
+        if (UserAccount.userAccount?.isLogin)! {
+            return isNewVersion ? NewFeatureCollectionViewController() : WelcomeViewController()
+        }
+        
+        return MainViewController()
+    }
+    
+    //extension里只能有计算型属性，不能有存储型属性；和OC类似：分类中不能存在成员变量，但是可以自己实现属性的get/set方法
+    private var isNewVersion: Bool {
+        //获取当前版本
+        guard  let currentVersion: String = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else {
+            return false
+        }
+        //获取之前版本
+        let lastVersion = UserDefaults.standard.string(forKey: "lastVersion") ?? ""
+        
+        //对比“当前”和“之前”版本
+        if lastVersion.compare(currentVersion) == .orderedAscending {
+            UserDefaults.standard.setValue(currentVersion, forKey: "lastVersion")
+            
+            return true
+        }
+        
+        return false
+        
+    }
 }
 
 extension AppDelegate : WeiboSDKDelegate {
