@@ -23,6 +23,18 @@ class NetworkRequestEngine: NSObject {
     
 }
 
+//MARK:获取微博数据
+extension NetworkRequestEngine{
+    func loadStatus(completionHandler: @escaping JsonNetworkCallback) {
+        let url = "https://api.weibo.com/2/statuses/home_timeline.json"
+        let parameters = ["access_token":UserAccount.userAccount!.accessToken!]
+        
+        jsonRequest(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: ["Accept":"application/json"]) { (dataResponse) in
+            completionHandler(dataResponse)
+        }
+    }
+}
+
 //MARK: 用户相关方法
 extension NetworkRequestEngine {
     func getUserInfo(completionHandler: @escaping JsonNetworkCallback) -> Void {
