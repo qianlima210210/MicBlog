@@ -32,10 +32,18 @@ class HomeViewController: BaseViewController {
                     guard let dic =  value as? [String:Any] else {
                         return
                     }
-                    guard let statuses = dic["statuses"] as? Array<[String:Any]> else {
+                    guard let statuses = dic["statuses"] as? [[String:Any]] else {
                         return
                     }
                     print(statuses.count)
+                    //遍历数组，字典转模型
+                    //1、创建一个可变数组
+                    var arrayM = [Status]()
+                    //2、遍历数组
+                    for item in statuses {
+                        arrayM.append(Status(dict: item))
+                    }
+                    print(arrayM)
                     
                 case .failure(let failDic):
                     print(failDic)
